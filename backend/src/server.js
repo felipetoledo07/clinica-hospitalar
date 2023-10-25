@@ -1,17 +1,12 @@
-const express = require('express');
-const routes = require('./routes');
-const sequelize = require('./database')
-const app = express();
+import express from "express"
+import userRoutes from "./routes/users.js"
+import cors from "cors"
 
-app.use(express.json());
-app.use(routes);
+const app = express()
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
+app.use(express.json())
+app.use(cors())
 
-app.listen(3000, () => {
-    console.log('Listening on port 3000');
-});
+app.use("/user", userRoutes)
 
-// database.User,sync({force: true});
+app.listen(3000)

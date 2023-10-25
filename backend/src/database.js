@@ -1,20 +1,8 @@
-const Sequelize = require('sequelize');
-const sequelize = new Sequelize('clinicaHospitalar', 'root', 'bella302', {
+import mysql from "mysql"
+
+export const db = mysql.createConnection({
     host: "localhost",
-    dialect: "mysql"
-});
-
-const User = sequelize.define('user', {
-    name: {
-        type: Sequelize.STRING
-    },
-    username: {
-        type: Sequelize.STRING
-    },
-    password: {
-        type: Sequelize.STRING
-    }
+    user: "root",
+    password: "bella302",
+    database: "clinicaHospitalar"
 })
-
-
-module.exports = sequelize;
