@@ -1,5 +1,6 @@
 const express = require('express');
 const routes = require('./routes');
+const sequelize = require('./database')
 const app = express();
 
 app.use(express.json());
@@ -11,4 +12,6 @@ app.get('/', (req, res) => {
 
 app.listen(3000, () => {
     console.log('Listening on port 3000');
-})
+});
+
+// database.User,sync({force: true});
