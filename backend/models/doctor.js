@@ -9,7 +9,15 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        specialization: {
+        cpf: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        medical_license: {
             type: DataTypes.STRING,
             allowNull: false,
         },

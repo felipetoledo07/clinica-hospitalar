@@ -24,8 +24,11 @@ router.put("/:id", async (req, res) => {
     doctor.set({
         firstname: newDoctor.firstname,
         lastname:  newDoctor.lastname,
-        specialization:  newDoctor.specialization,
-        openning_hours:  newDoctor.openning_hours,
+        cpf:  newDoctor.cpf,
+        password:  newDoctor.password,
+        medical_license:  newDoctor.medical_license,
+        oppening_hours:  newDoctor.openning_hours,
+        RoleId:  newDoctor.RoleId,
     })
     await doctor.save();
     res.json(doctor);

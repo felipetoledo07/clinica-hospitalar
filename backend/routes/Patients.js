@@ -24,8 +24,10 @@ router.put("/:id", async (req, res) => {
     patient.set({
         firstname: newPatient.firstname,
         lastname:  newPatient.lastname,
-        specialization:  newPatient.specialization,
-        openning_hours:  newPatient.openning_hours,
+        cpf:  newPatient.cpf,
+        password:  newPatient.password,
+        birth_date:  newPatient.birth_date,
+        address:  newPatient.address,
     })
     await patient.save();
     res.json(patient);
