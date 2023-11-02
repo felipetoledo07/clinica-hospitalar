@@ -20,7 +20,11 @@ app.use("/roles", roleRouter)
 const drugstoreRouter = require("./routes/Drugstores");
 app.use("/drugstores", drugstoreRouter)
 
+const statusRouter = require("./routes/Statuses");
+app.use("/status", statusRouter)
 
+const medicalAppointmentRouter = require("./routes/MedicalAppointments");
+app.use("/appointments", medicalAppointmentRouter)
 
 db.sequelize.sync().then(() => {
     app.listen(3000)
