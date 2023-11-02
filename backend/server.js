@@ -17,6 +17,9 @@ app.use("/patients", patientRouter)
 const roleRouter = require("./routes/Roles");
 app.use("/roles", roleRouter)
 
+const drugstoreRouter = require("./routes/Drugstores");
+app.use("/drugstores", drugstoreRouter)
+
 
 
 db.sequelize.sync().then(() => {
