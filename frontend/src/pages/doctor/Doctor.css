@@ -1,0 +1,14 @@
+.form {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 80%;
+    border: 1px solid black;
+    margin-top: 10px;
+}
+
+.form * {
+    padding: 5px;
+}
+

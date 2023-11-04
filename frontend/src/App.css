@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  height: 100vh;
 }
 
 .doctorsContainer {
@@ -21,4 +22,32 @@
 
 .doctors * {
   margin: 5px
+}
+
+.nav {
+  height: 9%;
+  border: 1px solid black;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.home_button, .doctor_login_button, .drugstore_login_button {
+  text-decoration: none;
+  color: black;
+  border: 1px black solid;
+  border-radius: 18px;
+  padding: 10px;
+}
+
+.login_div * {
+  margin: 10px;
+}
+
+.main_content {
+  border: 1px black solid;
+  height: 80vh;
+  margin-top: 5px;
 }
