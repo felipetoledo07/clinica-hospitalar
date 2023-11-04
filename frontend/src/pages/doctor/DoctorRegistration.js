@@ -6,7 +6,7 @@ import "./Doctor.css"
 import { useNavigate } from 'react-router-dom'
 
 
-function Registration() {
+function DoctorRegistration() {
 
     const navigate = useNavigate()
 
@@ -90,4 +90,4 @@ function Registration() {
   )
 }
 
-export default Registration
+export default DoctorRegistration

@@ -2,22 +2,22 @@ import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import * as Yup from "yup"
 import axios from 'axios'
-import './Doctor.css'
+import './Drugstore.css'
 
-function Login() {
+function DrugstoreLogin() {
 
     const initialValues = {
-        cpf: "",
+        cnpj: "",
         password: "",
     }
 
     const validationSchema = Yup.object().shape({
-        cpf: Yup.string().required(),
+        cnpj: Yup.string().required(),
         password: Yup.string().required(),
     })
 
     const onSubmit = (data) => {
-        axios.post("http://localhost:3000/doctors/login", data).then((response) => {
+        axios.post("http://localhost:3000/drugstores/login", data).then((response) => {
             console.log(response)
         })
     }
@@ -28,9 +28,9 @@ function Login() {
             <Form>
 
                 <div>
-                    <label>CPF: </label>
-                    <ErrorMessage name="cpf" component="div"></ErrorMessage>
-                    <Field id="inputCreateDoctor" name="cpf" placeholder=""></Field>
+                    <label>CNPJ: </label>
+                    <ErrorMessage name="cnpj" component="div"></ErrorMessage>
+                    <Field id="inputCreateDoctor" name="cnpj" placeholder=""></Field>
                 </div>
                 
                 <div>
@@ -42,7 +42,7 @@ function Login() {
                 <button type='submit'>Login</button>
 
                 <div>
-                    <a href='/doctor/registration'>Registrar-se</a>
+                    <a href='/drugstore/registration'>Registrar-se</a>
                 </div>
             </Form>
         </Formik>
@@ -50,4 +50,4 @@ function Login() {
   )
 }
 
-export default Login
+export default DrugstoreLogin
