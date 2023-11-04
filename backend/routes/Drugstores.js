@@ -31,19 +31,16 @@ router.post("/login", async (req, res) => {
     
     const drugstore = await Drugstore.findOne({ where: { cnpj: cnpj }})
 
-    if (!drugstore) {
-        res.json({ error: "User does not exist"})
-    } else {
-        bcrypt.compare(password, drugstore.password).then((match) => {
-            
-            if (!match) {
-                res.json({ error: "Wrong password"})
-            } else {
-                res.json("YOU LOGGED IN")
-            }
+    if (!drugstore) res.json({ error: "User does not exist"});
     
-        })
-    }
+    bcrypt.compare(password, drugstore.password).then((match) => {
+        
+    if (!match) res.json({ error: "Wrong password"});
+    
+    res.json("YOU LOGGED IN")
+        
+
+    })
 })
 
 router.put("/:id", async (req, res) => {

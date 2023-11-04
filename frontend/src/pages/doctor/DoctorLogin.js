@@ -18,7 +18,12 @@ function DoctorLogin() {
 
     const onSubmit = (data) => {
         axios.post("http://localhost:3000/doctors/login", data).then((response) => {
-            console.log(response)
+            if (response.data.error) {
+                alert(response.data.error);
+            } else {
+                sessionStorage.setItem("accessToken", response.data)
+            }
+
         })
     }
 
