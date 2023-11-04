@@ -1,6 +1,8 @@
 const express = require("express")
 const router = express.Router()
 const { Drugstore } = require("../models")
+const bcrypt = require('bcrypt')
+
 
 router.get("/", async (req, res) => {
     const listOfDrugstores = await Drugstore.findAll()
@@ -14,8 +16,34 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
     const drugstore = req.body;
-    await Drugstore.create(drugstore);
-    res.json(drugstore);
+    bcrypt.hash(drugstore.password, 10).then((hash) => {
+        Drugstore.create({
+            cnpj: drugstore.cnpj,
+            password: hash,
+        })
+    })
+    res.json("SUCCESS");
+})
+
+router.post("/login", async (req, res) => {
+
+    const {cnpj, password} = req.body;
+    
+    const drugstore = await Drugstore.findOne({ where: { cnpj: cnpj }})
+
+    if (!drugstore) {
+        res.json({ error: "User does not exist"})
+    } else {
+        bcrypt.compare(password, drugstore.password).then((match) => {
+            
+            if (!match) {
+                res.json({ error: "Wrong password"})
+            } else {
+                res.json("YOU LOGGED IN")
+            }
+    
+        })
+    }
 })
 
 router.put("/:id", async (req, res) => {
