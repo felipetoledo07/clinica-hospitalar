@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     })
 
     Status.associate = (models) => {
-        Status.hasMany(models.MedicalAppointment, {
+        Status.hasMany(models.Appointment, {
              foreignKey: { allowNull: false }
         });
     }

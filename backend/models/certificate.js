@@ -1,16 +1,16 @@
 module.exports = (sequelize, DataTypes) => {
 
-    const MedicalAppointment = sequelize.define("MedicalAppointment", {
+    const Certificate = sequelize.define("Certificate", {
         description: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        datetime: {
-            type: DataTypes.DATE,
+        suspention: {
+            type: DataTypes.DATEONLY,
             allowNull: false,
         },
     })
 
-    return MedicalAppointment
+    return Certificate
 
 }

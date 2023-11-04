@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
         },
     })
 
+    Drugstore.associate = (models) => {
+        Drugstore.hasMany(models.Recipe);
+    }
+
     return Drugstore
 
 }

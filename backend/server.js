@@ -23,8 +23,17 @@ app.use("/drugstores", drugstoreRouter)
 const statusRouter = require("./routes/Statuses");
 app.use("/status", statusRouter)
 
-const medicalAppointmentRouter = require("./routes/MedicalAppointments");
-app.use("/appointments", medicalAppointmentRouter)
+const appointmentRouter = require("./routes/Appointments");
+app.use("/appointments", appointmentRouter)
+
+const recordRouter = require("./routes/Records");
+app.use("/records", recordRouter)
+
+const certificateRouter = require("./routes/Certificates");
+app.use("/certificates", certificateRouter)
+
+const recipeRouter = require("./routes/Recipes");
+app.use("/recipes", recipeRouter)
 
 db.sequelize.sync().then(() => {
     app.listen(3000)
