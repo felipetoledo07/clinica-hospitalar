@@ -4,20 +4,22 @@ function SideBar() {
   return (
     <div className='side_bar'>
         <div>
-            <a href='#'>Consultas</a> 
+            <a href='/appointment'>Consultas</a> 
         </div>
         <div>
-            <a href='#'>Pacientes</a>
-            
+            <a href='/patient'>Pacientes</a>
         </div>
         <div>
-            <a href='#'>Receitas</a>
+            <a href='/doctor'>Médicos</a>
         </div>
         <div>
-            <a href='#'>Atestados</a>
+            <a href='/recipe'>Receitas</a>
         </div>
         <div>
-            <a href='#'>Farmácia</a>
+            <a href='/certificate'>Atestados</a>
+        </div>
+        <div>
+            <a href='/drugstore'>Farmácia</a>
         </div>
     </div>
   )

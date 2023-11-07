@@ -12,3 +12,48 @@
     padding: 5px;
 }
 
+.content {
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: top;
+    
+}
+
+.doctorsContainer {
+    margin-top: 20px;
+    width: 84%;
+    border: 1px solid black;
+}
+
+.doctors {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid black;
+    margin: 5px;
+    width: 95%;
+}
+
+.doctors * {
+
+    width: 20%;
+
+}
+
+.doctors_header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px;
+    margin: 5px;
+    width: 95%;
+}
+
+.doctors_header * {
+    width: 20%;
+}

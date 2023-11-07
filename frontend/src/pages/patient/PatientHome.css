@@ -5,13 +5,13 @@
     align-items: top;
 }
 
-.drugstoresContainer {
+.patientsContainer {
     margin-top: 20px;
     width: 84%;
     border: 1px solid black;
 }
 
-.drugstores {
+.patients {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -21,11 +21,11 @@
     margin: 5px;
 }
 
-.drugstores * {
-    width: 100%;
+.patients * {
+    width: 25%;
 }
 
-.drugstores_header {
+.patients_header {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -34,6 +34,6 @@
     margin: 5px;
 }
 
-.drugstores_header * {
-    width: 100%;
+.patients_header * {
+    width: 25%;
 }

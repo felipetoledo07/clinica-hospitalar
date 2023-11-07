@@ -19,6 +19,13 @@ function AppointmentHome() {
     <div className='content'>
       <SideBar></SideBar>
       <div className='appointmentsContainer'>
+            <div className='appointments_header'>
+                <div>Descrição</div>
+                <div>Horário</div>
+                <div>Doutor</div>
+                <div>Paciente</div>
+                <div>Status</div>
+            </div>
             {listOfAppointments.map((value, key) => {
             return (
             <div className='appointments'>

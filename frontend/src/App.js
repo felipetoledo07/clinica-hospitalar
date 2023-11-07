@@ -8,6 +8,11 @@ import DrugstoreLogin from "./pages/drugstore/DrugstoreLogin"
 import DrugstoreRegistration from "./pages/drugstore/DrugstoreRegistration"
 import HomePage from './pages/HomePage';
 import AppointmentHome from './pages/appointment/AppointmentHome';
+import PatientHome from './pages/patient/PatientHome';
+import RecipeHome from './pages/recipe/RecipeHome';
+import CertificateHome from './pages/certificate/CertificateHome';
+import DrugstoreHome from './pages/drugstore/DrugstoreHome';
+import DoctorHome from './pages/doctor/DoctorHome';
 
 
 function App() {
@@ -35,6 +40,11 @@ function App() {
           <Route path='/drugstore/registration' exact Component={DrugstoreRegistration}></Route>
           
           <Route path='/appointment/' exact Component={AppointmentHome}></Route>
+          <Route path='/patient/' exact Component={PatientHome}></Route>
+          <Route path='/doctor/' exact Component={DoctorHome}></Route>
+          <Route path='/recipe/' exact Component={RecipeHome}></Route>
+          <Route path='/certificate/' exact Component={CertificateHome}></Route>
+          <Route path='/drugstore/' exact Component={DrugstoreHome}></Route>
 
         </Routes>
       </Router>
