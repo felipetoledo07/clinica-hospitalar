@@ -1,0 +1,30 @@
+.content {
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: top;
+    
+}
+
+.appointmentsContainer {
+    margin-top: 20px;
+    width: 84%;
+    border: 1px solid black;
+}
+
+.appointments {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid black;
+    margin: 5px;
+}
+
+.appointments * {
+
+    width: 20%;
+
+}

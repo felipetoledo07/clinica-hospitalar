@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import * as Yup from "yup"
 import axios from 'axios'
 import './Doctor.css'
+import { useNavigate } from "react-router-dom" 
 
 function DoctorLogin() {
+
+    const navigate = useNavigate();
 
     const initialValues = {
         cpf: "",
@@ -22,6 +25,7 @@ function DoctorLogin() {
                 alert(response.data.error);
             } else {
                 sessionStorage.setItem("accessToken", response.data)
+                navigate("/appointment")
             }
 
         })

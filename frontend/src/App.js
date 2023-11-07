@@ -7,6 +7,7 @@ import DoctorRegistration from "./pages/doctor/DoctorRegistration"
 import DrugstoreLogin from "./pages/drugstore/DrugstoreLogin"
 import DrugstoreRegistration from "./pages/drugstore/DrugstoreRegistration"
 import HomePage from './pages/HomePage';
+import AppointmentHome from './pages/appointment/AppointmentHome';
 
 
 function App() {
@@ -22,16 +23,19 @@ function App() {
           </div>
         </div>
         <Routes>
-          <Route path='/' exact Component={HomePage}></Route>
           <Route path='/createdoctor' exact Component={CreateDoctor}></Route>
           <Route path='/doctor/:id' exact Component={Doctor}></Route>
           
+          <Route path='/' exact Component={HomePage}></Route>
 
           <Route path='/doctor/login' exact Component={DoctorLogin}></Route>
           <Route path='/doctor/registration' exact Component={DoctorRegistration}></Route>
 
           <Route path='/drugstore/login' exact Component={DrugstoreLogin}></Route>
           <Route path='/drugstore/registration' exact Component={DrugstoreRegistration}></Route>
+          
+          <Route path='/appointment/' exact Component={AppointmentHome}></Route>
+
         </Routes>
       </Router>
 
