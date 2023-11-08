@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@fontsource/poppins": "^5.0.8",
     "jsonwebtoken": "^9.0.2"
   }
 }

@@ -23,29 +23,34 @@ function DrugstoreLogin() {
     }
 
   return (
-    <div className='form'>
-      <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
-            <Form>
+    <div className='center'>
+        <div className='form'>
+        <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+                <Form>
+                    <div className='login_title'>
+                        Logar
+                    </div>
 
-                <div>
-                    <label>CNPJ: </label>
-                    <ErrorMessage name="cnpj" component="div"></ErrorMessage>
-                    <Field id="inputCreateDoctor" name="cnpj" placeholder=""></Field>
-                </div>
-                
-                <div>
-                    <label>Senha: </label>
-                    <ErrorMessage name="password" component="div"></ErrorMessage>
-                    <Field id="inputCreateDoctor" name="password" placeholder="" type="password"></Field>
-                </div>
+                    <div className='flex_column'>
+                        <label>CNPJ: </label>
+                        <ErrorMessage name="cnpj" component="div"></ErrorMessage>
+                        <Field className="input" id="inputCreateDoctor" name="cnpj" placeholder=""></Field>
+                    </div>
+                    
+                    <div className='flex_column'>
+                        <label>Senha: </label>
+                        <ErrorMessage name="password" component="div"></ErrorMessage>
+                        <Field className="input" id="inputCreateDoctor" name="password" placeholder="" type="password"></Field>
+                    </div>
 
-                <button type='submit'>Login</button>
+                    <button className='login_button' type='submit'>Login</button>
 
-                <div>
-                    <a href='/drugstore/registration'>Registrar-se</a>
-                </div>
-            </Form>
-        </Formik>
+                    <div>
+                        <a className='register_button' href='/drugstore/registration'>Registrar-se</a>
+                    </div>
+                </Form>
+            </Formik>
+        </div>
     </div>
   )
 }

@@ -1,19 +1,24 @@
+.center {
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
 .form {
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-around;
     align-items: center;
-    height: 80%;
-    border: 1px solid black;
+    height: 60%;
+    width: 30%;
+    border-radius: 20px;
     margin-top: 10px;
-}
-
-.form * {
-    padding: 5px;
+    background-color: #fff;
 }
 
 .content {
-
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -56,4 +61,44 @@
 
 .doctors_header * {
     width: 20%;
+}
+
+.field {
+    width: 30px;
+}
+
+.login_button {
+    background-color: #344FFF;
+    color: #fff;
+    width: 250px;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5px 0 0;
+}
+
+.register_button {
+    font-size: 12px;
+}
+
+.flex_column {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: start;
+}
+
+.input {
+    width: 90%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    margin: 10px 0;
+}
+
+
+.login_title {
+    font-size: 20px;
+    margin-bottom: 40px;
+    text-align: left;
 }

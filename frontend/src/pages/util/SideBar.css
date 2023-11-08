@@ -1,0 +1,14 @@
+.side_bar * {
+    text-decoration: none;
+    color: black;
+    text-align: left;
+    padding: 10px;
+  }
+  
+.side_bar {
+width: 18%;
+height: 100vh;
+background-color: #fff;
+color: #2b3674;
+}
+  
