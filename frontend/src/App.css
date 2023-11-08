@@ -44,14 +44,18 @@
 
 .doctor_login_button, .drugstore_login_button {
   text-decoration: none;
-  color: black;
-  border: 1px black solid;
-  border-radius: 18px;
-  padding: 10px;
+  color: #2b3674;
+  border-radius: 10px;
+  padding: 20px;
   background-color: #fff;
+  font-size: 12px;
 }
 
 .login_div * {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
   margin: 10px;
 }
 
@@ -87,4 +91,19 @@
 
 .flex_column {
   text-align: left;
+}
+
+
+.home_page {
+  height: 100px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: left;
+  align-items: center;
+  background-color: #fff;
+}
+
+.home_page * {
+  padding: 20px;
+  text-decoration: none;
 }

@@ -3,10 +3,19 @@ import { Formik, Form, Field, ErrorMessage } from "formik"
 import * as Yup from "yup"
 import axios from 'axios'
 import "./Doctor.css"
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 
 
 function DoctorRegistration() {
+
+    const [listOfStatus, setListOfStatus] = useState([]);
+
+    useEffect(() => {
+        axios.get("http://localhost:3000/roles").then((response) => {
+            setListOfStatus(response.data)
+          })
+    }, [])
 
     const navigate = useNavigate()
 
@@ -38,54 +47,72 @@ function DoctorRegistration() {
 
 
   return (
-    <div className='form'>
-      <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
-            <Form>
-                <div>
-                    <label>Nome: </label>
-                    <ErrorMessage name="firstname" component="div"></ErrorMessage>
-                    <Field id="inputCreateDoctor" name="firstname" placeholder=""></Field>
-                </div>
+    <div className='center'>
+        <div className='form'>
+        <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+                <Form>
+                    <div className='login_title'>
+                        Cadastrar
+                    </div>
+                    <div className='row'>
+                        <div>
+                            <div className='flex_column'>
+                                <label>Nome: </label>
+                                <ErrorMessage name="firstname" component="span"></ErrorMessage>
+                                <Field className="input" id="inputCreateDoctor" name="firstname" placeholder=""></Field>
+                            </div>
 
-                <div>
-                    <label>Sobrenome: </label>
-                    <ErrorMessage name="lastname" component="div"></ErrorMessage>
-                    <Field id="inputCreateDoctor" name="lastname" placeholder=""></Field>
-                </div>
+                            <div className='flex_column'>
+                                <label>Sobrenome: </label>
+                                <ErrorMessage name="lastname" component="span"></ErrorMessage>
+                                <Field className="input" id="inputCreateDoctor" name="lastname" placeholder=""></Field>
+                            </div>
 
-                <div>
-                    <label>CPF: </label>
-                    <ErrorMessage name="cpf" component="div"></ErrorMessage>
-                    <Field id="inputCreateDoctor" name="cpf" placeholder=""></Field>
-                </div>
-                
-                <div>
-                    <label>Senha: </label>
-                    <ErrorMessage name="password" component="div"></ErrorMessage>
-                    <Field id="inputCreateDoctor" name="password" placeholder="" type="password"></Field>
-                </div>
-                
-                <div>
-                    <label>CRM: </label>
-                    <ErrorMessage name="medical_license" component="div"></ErrorMessage>
-                    <Field id="inputCreateDoctor" name="medical_license" placeholder=""></Field>
-                </div>
+                            <div className='flex_column'>
+                                <label>CPF: </label>
+                                <ErrorMessage name="cpf" component="span"></ErrorMessage>
+                                <Field className="input" id="inputCreateDoctor" name="cpf" placeholder=""></Field>
+                            </div>
+                            
+                            <div className='flex_column'>
+                                <label>Senha: </label>
+                                <ErrorMessage name="password" component="span"></ErrorMessage>
+                                <Field className="input" id="inputCreateDoctor" name="password" placeholder="" type="password"></Field>
+                            </div>
+                        </div>
+                        <div>
+                            <div className='flex_column'>
+                                <label>CRM: </label>
+                                <ErrorMessage name="medical_license" component="span"></ErrorMessage>
+                                <Field className="input" id="inputCreateDoctor" name="medical_license" placeholder=""></Field>
+                            </div>
 
-                <div>
-                    <label>Horário de atendimento: </label>
-                    <ErrorMessage name="openning_hours" component="div"></ErrorMessage>
-                    <Field id="inputCreateDoctor" name="openning_hours" placeholder=""></Field>
-                </div>
-                
-                <div>
-                    <label>Especialidade: </label>
-                    <ErrorMessage name="RoleId" component="div"></ErrorMessage>
-                    <Field id="inputCreateDoctor" name="RoleId" placeholder=""></Field>
-                </div>
+                            <div className='flex_column'>
+                                <label>Horário de atendimento: </label>
+                                <ErrorMessage name="openning_hours" component="span"></ErrorMessage>
+                                <Field className="input" id="inputCreateDoctor" name="openning_hours" placeholder=""></Field>
+                            </div>
+                            
+                            <div className='flex_column'>
+                                <label>Especialidade: </label>
+                                <ErrorMessage name="RoleId" component="span"></ErrorMessage>
+                                <Field as="select" name='RoleId'>
+                                    <option>Selecione</option>
+                                    {
+                                    listOfStatus.map((value, key) => {
+                                        return (
+                                            <option value={value.id}>{value.description}</option>
+                                        )
+                                    })}
+                                </Field>
+                            </div>
+                        </div>
+                    </div>
 
-                <button type='submit'>Registrar</button>
-            </Form>
-        </Formik>
+                    <button className='login_button' type='submit'>Registrar</button>
+                </Form>
+            </Formik>
+        </div>
     </div>
   )
 }
