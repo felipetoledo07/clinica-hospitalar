@@ -22,7 +22,7 @@
 }
 
 .drugstores * {
-    width: 100%;
+    width: 50%;
 }
 
 .drugstores_header {
@@ -35,5 +35,5 @@
 }
 
 .drugstores_header * {
-    width: 100%;
+    width: 50%;
 }

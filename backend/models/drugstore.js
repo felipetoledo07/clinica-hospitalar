@@ -1,6 +1,10 @@
 module.exports = (sequelize, DataTypes) => {
 
     const Drugstore = sequelize.define("Drugstore", {
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         cnpj: {
             type: DataTypes.STRING,
             allowNull: false,

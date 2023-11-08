@@ -18,6 +18,7 @@ router.post("/", async (req, res) => {
     const drugstore = req.body;
     bcrypt.hash(drugstore.password, 10).then((hash) => {
         Drugstore.create({
+            name: drugstore.name,
             cnpj: drugstore.cnpj,
             password: hash,
         })

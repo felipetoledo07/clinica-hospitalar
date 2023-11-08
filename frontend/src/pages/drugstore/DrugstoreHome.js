@@ -19,12 +19,14 @@ function DrugstoreHome() {
       <SideBar></SideBar>
       <div className='drugstoresContainer'>
             <div className='drugstores_header'>
+                <div>Nome da empresa</div>
                 <div>CNPJ</div>
             </div>
 
             {listOfDrugstores.map((value, key) => {
             return (
             <div className='drugstores'>
+                <div className='name'> {value.name}</div>
                 <div className='cnpj'> {value.cnpj}</div>
             </div>)
         })}

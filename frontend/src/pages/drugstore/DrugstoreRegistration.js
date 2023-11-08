@@ -11,11 +11,13 @@ function DrugstoreRegistration() {
     const navigate = useNavigate()
 
     const initialValues = {
+        name: "",
         cnpj: "",
         password: "",
     }
 
     const validationSchema = Yup.object().shape({
+        name: Yup.string().required(),
         cnpj: Yup.string().required(),
         password: Yup.string().required(),
     })
@@ -32,13 +34,19 @@ function DrugstoreRegistration() {
       <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
             <Form>
                 <div>
-                    <label>CNPJ: </label>
+                    <label>Nome da empresa</label>
+                    <ErrorMessage name="name" component="div"></ErrorMessage>
+                    <Field id="inputCreateDoctor" name="name" placeholder=""></Field>
+                </div>
+
+                <div>
+                    <label>CNPJ</label>
                     <ErrorMessage name="cnpj" component="div"></ErrorMessage>
                     <Field id="inputCreateDoctor" name="cnpj" placeholder=""></Field>
                 </div>
                 
                 <div>
-                    <label>Senha: </label>
+                    <label>Senha</label>
                     <ErrorMessage name="password" component="div"></ErrorMessage>
                     <Field id="inputCreateDoctor" name="password" placeholder="" type="password"></Field>
                 </div>
