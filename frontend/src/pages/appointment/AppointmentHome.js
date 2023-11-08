@@ -10,15 +10,13 @@ function AppointmentHome() {
 
     const [listOfAppointments, setListOfAppointments] = useState([]);
 
-    const [doctor, setDoctor] = useState ([]);
-
     useEffect(() => {
         axios.get("http://localhost:3000/appointments").then((response) => {
-          setListOfAppointments(response.data)
+          setListOfAppointments(response.data[0])
           })
     }, [])
 
-
+    
 
   return (
     <div className='content'>
@@ -35,19 +33,12 @@ function AppointmentHome() {
                   <div>Horário</div>
               </div>
               {listOfAppointments.map((value, key) => {
-
-              // axios.get(`http://localhost:3000/doctors/${value.DoctorId}`).then((response) => {
-              //   setDoctor(response.data)
-              //   console.log(doctor.id)
-            // })
-
               return (
               <div className='appointments'>
-                  <div className='DoctorId'> {value.DoctorId} </div>
-                  <div className='PatientId'> {value.PatientId} </div>
-                  <div className='StatusId'> {value.StatusId} </div>
-                  <div className='specialization'> {value.datetime} </div>
-                  
+                  <div className='doctorName'> {value.doctorName} </div>
+                  <div className='patientName'> {value.patientName} </div>
+                  <div className='status'> {value.description} </div>
+                  <div className='datetime'> {value.datetime} </div>
               </div>)
           })}
           </div>

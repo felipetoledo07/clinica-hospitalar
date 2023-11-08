@@ -1,9 +1,15 @@
 const express = require("express")
 const router = express.Router()
-const { Appointment } = require("../models")
+const { Appointment, sequelize } = require("../models")
 
 router.get("/", async (req, res) => {
-    const listOfAppointments = await Appointment.findAll()
+    const listOfAppointments = await sequelize.query(`
+    select distinct CONCAT(d.firstname, ' ', d.lastname) as doctorName,  CONCAT(p.firstname, ' ', p.lastname) as patientName, s.description, a.datetime 
+    from appointments a
+    join doctors d on d.id = a.DoctorId
+    join patients p on p.id = a.PatientId
+    join statuses s on s.id = a.StatusId;
+    `)
     res.json(listOfAppointments)
 })
 
