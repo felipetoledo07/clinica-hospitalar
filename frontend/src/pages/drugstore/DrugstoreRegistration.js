@@ -30,30 +30,39 @@ function DrugstoreRegistration() {
 
 
   return (
-    <div className='form'>
-      <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
-            <Form>
-                <div>
-                    <label>Nome da empresa</label>
-                    <ErrorMessage name="name" component="div"></ErrorMessage>
-                    <Field id="inputCreateDoctor" name="name" placeholder=""></Field>
-                </div>
+    <div className='center'>
+        <div className='form'>
+        <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+                <Form>
+                    <div className='login_title'>
+                        Cadastrar
+                    </div>
+                    <div className='row'>
+                        <div>
+                            <div className='flex_column'>
+                                <label>Nome da empresa</label>
+                                <ErrorMessage name="name" component="div"></ErrorMessage>
+                                <Field className="input" id="inputCreateDoctor" name="name" placeholder=""></Field>
+                            </div>
 
-                <div>
-                    <label>CNPJ</label>
-                    <ErrorMessage name="cnpj" component="div"></ErrorMessage>
-                    <Field id="inputCreateDoctor" name="cnpj" placeholder=""></Field>
-                </div>
-                
-                <div>
-                    <label>Senha</label>
-                    <ErrorMessage name="password" component="div"></ErrorMessage>
-                    <Field id="inputCreateDoctor" name="password" placeholder="" type="password"></Field>
-                </div>
+                            <div className='flex_column'>
+                                <label>CNPJ</label>
+                                <ErrorMessage name="cnpj" component="div"></ErrorMessage>
+                                <Field className="input" id="inputCreateDoctor" name="cnpj" placeholder=""></Field>
+                            </div>
+                            
+                            <div className='flex_column'>
+                                <label>Senha</label>
+                                <ErrorMessage name="password" component="div"></ErrorMessage>
+                                <Field className="input" id="inputCreateDoctor" name="password" placeholder="" type="password"></Field>
+                            </div>
 
-                <button type='submit'>Registrar</button>
-            </Form>
-        </Formik>
+                            <button className='login_button' type='submit'>Registrar</button>
+                        </div>
+                    </div>
+                </Form>
+            </Formik>
+        </div>
     </div>
   )
 }
