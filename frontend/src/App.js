@@ -13,6 +13,7 @@ import RecipeHome from './pages/recipe/RecipeHome';
 import CertificateHome from './pages/certificate/CertificateHome';
 import DrugstoreHome from './pages/drugstore/DrugstoreHome';
 import DoctorHome from './pages/doctor/DoctorHome';
+import Appointment from './pages/appointment/Appointment';
 
 
 function App() {
@@ -34,6 +35,8 @@ function App() {
           <Route path='/drugstore/registration' exact Component={DrugstoreRegistration}></Route>
           
           <Route path='/appointment/' exact Component={AppointmentHome}></Route>
+          <Route path='/appointment/:id' exact Component={Appointment}></Route>
+
           <Route path='/patient/' exact Component={PatientHome}></Route>
           <Route path='/doctor/' exact Component={DoctorHome}></Route>
           <Route path='/recipe/' exact Component={RecipeHome}></Route>

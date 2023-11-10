@@ -7,6 +7,12 @@ module.exports = (sequelize, DataTypes) => {
         },
     })
 
+    Record.associate = (models) => {
+        Record.belongsTo(models.Appointment, {
+             foreignKey: { allowNull: false }
+        });
+    }
+
     return Record
 
 }

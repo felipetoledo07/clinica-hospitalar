@@ -7,10 +7,12 @@
 }
 
 .appointmentsContainer {
-    margin-top: 20px;
+    margin-top: 10px;
     width: 100%;
     border-radius: 20px;
     background-color: #fff;
+    display: flex;
+    flex-flow: column nowrap;
 }
 
 .appointments {
@@ -22,10 +24,21 @@
     margin: 5px;
 }
 
+.appointment {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    margin: 5px;
+}
+
 .appointments * {
-
     width: 25%;
+}
 
+.appointment * {
+    width: 33%;
 }
 
 .appointments_header {
@@ -37,6 +50,15 @@
     margin: 5px;
 }
 
+.appointment_header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px;
+
+}
+
 .appointments_header * {
     width: 25%;
     font-size: 12px;
@@ -44,8 +66,15 @@
     color: #a3aed0;
 }
 
+.appointment_header * {
+    width: 33%;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #a3aed0;
+}
+
 .title {
-    margin: 40px 0 0;
+    margin: 20px 0 0;
     font-size: 26px;
     text-align: left;
     padding: 10px;
@@ -58,4 +87,79 @@
     align-items: center;
     width: 100%;
     margin: 0 50px;
+}
+
+.appointmentBox {
+    box-shadow: 3px 3px 10px #a3aed0; 
+    align-self: center;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.appointmentBoxTitle {
+    text-align: left;
+}
+
+.appointmentContent {
+    width: 80%;
+    align-self: center;
+}
+
+.appointmentLabel {
+    font-size: 10px;
+    margin: 5px;
+    color: #a3aed0;
+}
+
+.appointmentDescription {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: start;
+    align-items: start;
+}
+
+.appointmentTextarea {
+    width: 100%;
+    height: 80px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 1px solid #a3aed0;
+    font-size: 10px;
+    padding: 10px;
+}
+
+.appointmentButton {
+    padding: 10px;
+}
+
+.greenButton {
+    margin: 0 10px;
+    border: none;
+    background-color: #01B574;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+.appointmentInput {
+    width: 25%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 1px solid #a3aed0;
+    font-size: 10px;
+    padding: 10px;
+}
+
+.redButton {
+    margin: 0 10px;
+    border: none;
+    background-color: #EE5D50;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    text-transform: uppercase;
 }

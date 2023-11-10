@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
         },
     })
 
+    Certificate.associate = (models) => {
+        Certificate.belongsTo(models.Appointment);
+    }
+
     return Certificate
 
 }

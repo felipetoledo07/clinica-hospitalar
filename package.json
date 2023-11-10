@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@fontsource/poppins": "^5.0.8",
-    "jsonwebtoken": "^9.0.2"
+    "jsonwebtoken": "^9.0.2",
+    "react-datepicker": "^4.21.0"
   }
 }

@@ -4,15 +4,18 @@ import axios from "axios"
 import { useEffect, useState } from 'react';
 import '../../App.css';
 import './AppointmentHome.css';
+import { useNavigate } from "react-router-dom"
 
 
 function AppointmentHome() {
+
+    const navigate = useNavigate()
 
     const [listOfAppointments, setListOfAppointments] = useState([]);
 
     useEffect(() => {
         axios.get("http://localhost:3000/appointments").then((response) => {
-          setListOfAppointments(response.data[0])
+          setListOfAppointments(response.data)
           })
     }, [])
 
@@ -33,13 +36,25 @@ function AppointmentHome() {
                   <div>Horário</div>
               </div>
               {listOfAppointments.map((value, key) => {
-              return (
-              <div className='appointments'>
-                  <div className='doctorName'> {value.doctorName} </div>
-                  <div className='patientName'> {value.patientName} </div>
-                  <div className='status'> {value.description} </div>
-                  <div className='datetime'> {value.datetime} </div>
-              </div>)
+              
+              if (value.description === "Agendado") {
+                return (  
+                <div className='appointments'  onClick={() => {navigate(`/appointment/${value.id}`)}}>
+                    <div className='doctorName'> {value.doctorName} </div>
+                    <div className='patientName'> {value.patientName} </div>
+                    <div className='status'> {value.description} </div>
+                    <div className='datetime'> {value.datetime} </div>
+                </div>)
+              } else {
+                return (
+                <div className='appointments'>
+                    <div className='doctorName'> {value.doctorName} </div>
+                    <div className='patientName'> {value.patientName} </div>
+                    <div className='status'> {value.description} </div>
+                    <div className='datetime'> {value.datetime} </div>
+                </div>)
+              }
+
           })}
           </div>
       </div>

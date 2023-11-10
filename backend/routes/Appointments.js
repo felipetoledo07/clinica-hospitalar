@@ -1,20 +1,31 @@
 const express = require("express")
 const router = express.Router()
 const { Appointment, sequelize } = require("../models")
+const { QueryTypes } = require("sequelize")
 
 router.get("/", async (req, res) => {
     const listOfAppointments = await sequelize.query(`
-    select distinct CONCAT(d.firstname, ' ', d.lastname) as doctorName,  CONCAT(p.firstname, ' ', p.lastname) as patientName, s.description, a.datetime 
+    select a.id, CONCAT(d.firstname, ' ', d.lastname) as doctorName,  CONCAT(p.firstname, ' ', p.lastname) as patientName, s.description, a.datetime 
     from appointments a
     join doctors d on d.id = a.DoctorId
     join patients p on p.id = a.PatientId
     join statuses s on s.id = a.StatusId;
-    `)
+    `,{
+        type: QueryTypes.SELECT
+    })
     res.json(listOfAppointments)
 })
 
 router.get("/:id", async (req, res) => {
-    const appointment = await Appointment.findByPk(req.params.id)
+    const appointment = await sequelize.query(`
+    select a.id,  CONCAT(p.firstname, ' ', p.lastname) as patientName, s.description, a.datetime 
+    from appointments a
+    join patients p on p.id = a.PatientId
+    join statuses s on s.id = a.StatusId
+    where a.id = ${req.params.id}
+    `,{
+        type: QueryTypes.SELECT
+    })
     res.json(appointment)
 })
 
@@ -31,6 +42,24 @@ router.put("/:id", async (req, res) => {
         description: newAppointment.description,
         datetime:  newAppointment.datetime,
         StatusId: newAppointment.StatusId,
+    })
+    await appointment.save();
+    res.json(appointment);
+})
+
+router.put("/done/:id", async (req, res) => {
+    const appointment = await Appointment.findByPk(req.params.id);
+    appointment.set({
+        StatusId: 2,
+    })
+    await appointment.save();
+    res.json(appointment);
+})
+
+router.put("/cancel/:id", async (req, res) => {
+    const appointment = await Appointment.findByPk(req.params.id);
+    appointment.set({
+        StatusId: 3,
     })
     await appointment.save();
     res.json(appointment);
