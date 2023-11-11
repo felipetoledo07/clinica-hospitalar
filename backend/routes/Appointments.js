@@ -29,6 +29,37 @@ router.get("/:id", async (req, res) => {
     res.json(appointment)
 })
 
+router.get("/patient/:id", async (req, res) => {
+    const appointment = await sequelize.query(`
+    select a.id as AppointmentId, CONCAT(d.firstname, ' ', d.lastname) as doctorName, s.description, a.datetime 
+    from appointments a
+    join doctors d on d.id = a.DoctorId
+    join patients p on p.id = a.PatientId
+    join statuses s on s.id = a.StatusId
+    where p.id = ${req.params.id};
+    `,{
+        type: QueryTypes.SELECT
+    })
+    res.json(appointment)
+})
+
+router.get("/done/:id", async (req, res) => {
+    const appointment = await sequelize.query(`
+    select a.id as AppointmentId, CONCAT(d.firstname, ' ', d.lastname) as doctorName, s.description, a.datetime, r.description as recipeDescription, re.description as recordDescription, c.description as certificateDescription, c.suspention
+    from appointments a
+    join doctors d on d.id = a.DoctorId
+    join patients p on p.id = a.PatientId
+    join statuses s on s.id = a.StatusId
+    join recipes r on r.appointmentId = a.id
+    join records re on re.appointmentId = a.id
+    join certificates c on c.appointmentId = a.id
+    where a.id = ${req.params.id};
+    `,{
+        type: QueryTypes.SELECT
+    })
+    res.json(appointment)
+})
+
 router.post("/", async (req, res) => {
     const appointment = req.body;
     await Appointment.create(appointment);

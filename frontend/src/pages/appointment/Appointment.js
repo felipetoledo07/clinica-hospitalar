@@ -5,7 +5,6 @@ import * as Yup from "yup"
 import SideBar from '../util/SideBar';
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import { useNavigate } from 'react-router-dom';
-import DatePicker from 'react-datepicker/dist/react-datepicker';
 
 function Appointment() {
   

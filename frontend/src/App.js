@@ -14,6 +14,8 @@ import CertificateHome from './pages/certificate/CertificateHome';
 import DrugstoreHome from './pages/drugstore/DrugstoreHome';
 import DoctorHome from './pages/doctor/DoctorHome';
 import Appointment from './pages/appointment/Appointment';
+import Patient from './pages/patient/Patient';
+import PatientAppointment from './pages/patient/PatientAppointment';
 
 
 function App() {
@@ -38,6 +40,9 @@ function App() {
           <Route path='/appointment/:id' exact Component={Appointment}></Route>
 
           <Route path='/patient/' exact Component={PatientHome}></Route>
+          <Route path='/patient/:id' exact Component={Patient}></Route>
+          <Route path='/patient/appointment/:id' exact Component={PatientAppointment}></Route>
+
           <Route path='/doctor/' exact Component={DoctorHome}></Route>
           <Route path='/recipe/' exact Component={RecipeHome}></Route>
           <Route path='/certificate/' exact Component={CertificateHome}></Route>
