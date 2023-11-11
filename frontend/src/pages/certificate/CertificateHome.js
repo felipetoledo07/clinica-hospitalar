@@ -17,20 +17,25 @@ function CertificateHome() {
   return (
     <div className='content'>
       <SideBar></SideBar>
-      <div className='certificatesContainer'>
-            <div className='certificates_header'>
-                <div>Descrição</div>
-                <div>Data de validade</div>
-            </div>
-
-            {listOfCertificates.map((value, key) => {
-            return (
-            <div className='certificates'>
-                <div className='name'> {value.description}</div>
-                <div className='cpf'> {value.suspention} </div>
-            </div>)
-        })}
+      <div className='center'>
+        <div className='title'>
+          Atestados
         </div>
+        <div className='certificatesContainer'>
+                <div className='certificates_header'>
+                    <div>Descrição</div>
+                    <div>Data de validade</div>
+                </div>
+
+                {listOfCertificates.map((value, key) => {
+                return (
+                <div className='certificates'>
+                    <div className='name'> {value.description}</div>
+                    <div className='cpf'> {value.suspention} </div>
+                </div>)
+            })}
+            </div>
+      </div>
     </div>
   )
 }

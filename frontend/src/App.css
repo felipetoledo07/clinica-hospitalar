@@ -11,26 +11,6 @@
   font-weight: bold;
 }
 
-.doctorsContainer {
-  margin-top: 50px;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.doctors {
-  width: 800px;
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column nowrap;
-  margin: 1px;
-}
-
-.doctors * {
-  margin: 5px
-}
-
 .nav {
   width: 12%;
   height: 9%;

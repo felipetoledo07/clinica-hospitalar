@@ -1,12 +1,19 @@
 const express = require("express")
 const router = express.Router()
-const { Doctor } = require("../models")
+const { Doctor, sequelize } = require("../models")
 const bcrypt = require('bcrypt')
+const { QueryTypes } = require("sequelize")
 
 const {sign} = require("jsonwebtoken")
 
 router.get("/", async (req, res) => {
-    const listOfDoctors = await Doctor.findAll()
+    const listOfDoctors = await sequelize.query(`
+    select d.id, d.firstname, d.lastname, d.cpf, d.medical_license, d.openning_hours, r.description
+    from doctors d
+    join roles r on d.RoleId = r.id;
+    `,{
+        type: QueryTypes.SELECT
+    })
     res.json(listOfDoctors)
 })
 

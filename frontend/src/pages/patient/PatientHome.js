@@ -23,7 +23,7 @@ function PatientHome() {
     <div className='content'>
       <SideBar></SideBar>
       <div className='center'>
-      <div className='title'>
+        <div className='title'>
           Pacientes
         </div>
         <div className='patientsContainer'>

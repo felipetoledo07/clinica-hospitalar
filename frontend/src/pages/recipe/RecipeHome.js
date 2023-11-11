@@ -17,32 +17,32 @@ function RecipeHome() {
   return (
     <div className='content'>
       <SideBar></SideBar>
-      <div className='recipesContainer'>
-            <div className='recipes_header'>
-                <div>Descrição</div>
-                <div>Disponibilidade</div>
-                <div>Farmácia</div>
-            </div>
-
-            {listOfRecipes.map((value, key) => {
-
-              let avaliability_display = "Disponível"
-
-
-              if(value.avaliability) {
-                avaliability_display = "Disponível"
-              } else {
-                avaliability_display = "Indisponível"
-              }
-
-            return (
-            <div className='recipes'>
-                <div className='description'> {value.description}</div>
-                <div className='avaliability'> {avaliability_display} </div>
-                <div className='DrugstoreId'> {value.DrugstoreId} </div>
-            </div>)
-        })}
+      <div className='center'>
+        <div className='title'>
+          Receitas
         </div>
+        <div className='recipesContainer'>
+              <div className='recipes_header'>
+                  <div>Descrição</div>
+                  <div>Disponibilidade</div>
+                  <div>Farmácia</div>
+              </div>
+
+              {listOfRecipes.map((value, key) => {
+
+                let avaliability_display = value.avaliability ? "Disponível" : "Indisponível"
+
+                let drugstore = value.DrugstoreId === null ? "Nenhuma" : value.DrugstoreId
+
+              return (
+              <div className='recipes'>
+                  <div className='description'> {value.description}</div>
+                  <div className='avaliability'> {avaliability_display} </div>
+                  <div className='DrugstoreId'> {drugstore} </div>
+              </div>)
+          })}
+          </div>
+      </div>
     </div>
   )
 }

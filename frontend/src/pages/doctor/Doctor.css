@@ -22,14 +22,17 @@
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
-    align-items: top;
-    
+    align-items: start;
+    margin: 0;
 }
 
 .doctorsContainer {
-    margin-top: 20px;
-    width: 84%;
-    border: 1px solid black;
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 20px;
+    background-color: #fff;
+    display: flex;
+    flex-flow: column nowrap;
 }
 
 .doctors {
@@ -38,15 +41,11 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    border: 1px solid black;
     margin: 5px;
-    width: 95%;
 }
 
 .doctors * {
-
     width: 20%;
-
 }
 
 .doctors_header {
@@ -56,11 +55,13 @@
     align-items: center;
     padding: 20px;
     margin: 5px;
-    width: 95%;
 }
 
 .doctors_header * {
     width: 20%;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #a3aed0;
 }
 
 .field {
