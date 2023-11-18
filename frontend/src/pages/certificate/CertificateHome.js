@@ -29,7 +29,7 @@ function CertificateHome() {
 
                 {listOfCertificates.map((value, key) => {
                 return (
-                <div className='certificates'>
+                <div className='certificates hover'>
                     <div className='name'> {value.description}</div>
                     <div className='cpf'> {value.suspention} </div>
                 </div>)

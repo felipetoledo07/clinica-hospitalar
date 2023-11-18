@@ -36,7 +36,7 @@ function PatientHome() {
 
               {listOfPatients.map((value, key) => {
               return (
-              <div className='patients' onClick={() => {navigate(`/patient/${value.id}`)}}>
+              <div className='patients hover' onClick={() => {navigate(`/patient/${value.id}`)}}>
                   <div className='name'> {value.firstname} {value.lastname}</div>
                   <div className='cpf'> {value.cpf} </div>
                   <div className='birthdate'> {value.birth_date} </div>

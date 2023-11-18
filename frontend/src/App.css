@@ -47,14 +47,14 @@
   align-items: center;
 }
 
-.side_bar * {
+.sideBar * {
   text-decoration: none;
   padding: 10px;
 }
 
-.side_bar {
+.sideBar {
   width: 18%;
-  height: 100vh;
+  height: 95vh;
   background-color: #fff;
   color: #2b3674;
   display: flex;
@@ -67,10 +67,15 @@
 .home_button {
   text-transform: uppercase;
   font-size: 20px;
+  align-self: center;
 }
 
-.flex_column {
+.sidebarItemsContainer {
+  width: 100%;
   text-align: left;
+  flex-flow: column nowrap;
+  justify-content: left;
+  align-items: start;
 }
 
 
@@ -86,4 +91,18 @@
 .home_page * {
   padding: 20px;
   text-decoration: none;
+}
+
+.hover:hover {
+  background-color: #f3f3f3;
+}
+
+.hover {
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.sidebarItem * {
+  width: 100%;
+  border-radius: 10px;
 }

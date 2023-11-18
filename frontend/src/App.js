@@ -16,7 +16,10 @@ import DoctorHome from './pages/doctor/DoctorHome';
 import Appointment from './pages/appointment/Appointment';
 import Patient from './pages/patient/Patient';
 import PatientAppointment from './pages/patient/PatientAppointment';
-
+import RecipePharmacy from './pages/recipe/RecipePharmacy';
+import RecipePharmacyDetails from './pages/recipe/RecipePharmacyDetails';
+import PharmacyDoctor from "./pages/doctor/PharmacyDoctor"
+import PharmacyDrugstore from './pages/drugstore/PharmacyDrugstore';
 
 function App() {
 
@@ -42,6 +45,11 @@ function App() {
           <Route path='/patient/' exact Component={PatientHome}></Route>
           <Route path='/patient/:id' exact Component={Patient}></Route>
           <Route path='/patient/appointment/:id' exact Component={PatientAppointment}></Route>
+
+          <Route path='/pharmacy/recipe' exact Component={RecipePharmacy}></Route>
+          <Route path='/pharmacy/recipe/:id' exact Component={RecipePharmacyDetails}></Route>
+          <Route path='/pharmacy/drugstore/' exact Component={PharmacyDrugstore}></Route>
+          <Route path='/pharmacy/doctor/' exact Component={PharmacyDoctor}></Route>
 
           <Route path='/doctor/' exact Component={DoctorHome}></Route>
           <Route path='/recipe/' exact Component={RecipeHome}></Route>

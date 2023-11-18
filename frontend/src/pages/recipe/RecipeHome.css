@@ -25,7 +25,7 @@
 }
 
 .recipes * {
-    width: 33%;
+    width: 50%;
 }
 
 .recipes_header {
@@ -38,7 +38,7 @@
 }
 
 .recipes_header * {
-    width: 33%;
+    width: 50%;
     font-size: 12px;
     text-transform: uppercase;
     color: #a3aed0;

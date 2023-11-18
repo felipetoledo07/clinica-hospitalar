@@ -37,14 +37,14 @@ function Patient() {
                     if(value.description === "Agendado") {
 
                         return (
-                            <div className='patients' onClick={() => {navigate(`/appointment/${value.AppointmentId}`)}}>
+                            <div className='patients hover' onClick={() => {navigate(`/appointment/${value.AppointmentId}`)}}>
                                 <div className='name'> {value.doctorName}</div>
                                 <div className='cpf'> {value.description} </div>
                                 <div className='birthdate'> {value.datetime} </div>
                             </div>)
                     } else if (value.description === "Realizado") {
                         return (
-                            <div className='patients' onClick={() => navigate(`/patient/appointment/${value.AppointmentId}`)}>
+                            <div className='patients hover' onClick={() => navigate(`/patient/appointment/${value.AppointmentId}`)}>
                                 <div className='name'> {value.doctorName}</div>
                                 <div className='cpf'> {value.description} </div>
                                 <div className='birthdate'> {value.datetime} </div>
@@ -52,7 +52,7 @@ function Patient() {
 
                     } else {
                       return (
-                        <div className='patients'>
+                        <div className='patients hover'>
                             <div className='name'> {value.doctorName}</div>
                             <div className='cpf'> {value.description} </div>
                             <div className='birthdate'> {value.datetime} </div>

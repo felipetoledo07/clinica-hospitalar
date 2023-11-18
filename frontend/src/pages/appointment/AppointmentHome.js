@@ -39,7 +39,7 @@ function AppointmentHome() {
               
               if (value.description === "Agendado") {
                 return (  
-                <div className='appointments'  onClick={() => {navigate(`/appointment/${value.id}`)}}>
+                <div className='appointments hover'  onClick={() => {navigate(`/appointment/${value.id}`)}}>
                     <div className='doctorName'> {value.doctorName} </div>
                     <div className='patientName'> {value.patientName} </div>
                     <div className='status'> {value.description} </div>
@@ -47,11 +47,11 @@ function AppointmentHome() {
                 </div>)
               } else {
                 return (
-                <div className='appointments'>
-                    <div className='doctorName'> {value.doctorName} </div>
-                    <div className='patientName'> {value.patientName} </div>
-                    <div className='status'> {value.description} </div>
-                    <div className='datetime'> {value.datetime} </div>
+                <div className='appointments hover'>
+                    <div className='doctorName item'> {value.doctorName} </div>
+                    <div className='patientName item'> {value.patientName} </div>
+                    <div className='status item'> {value.description} </div>
+                    <div className='datetime item'> {value.datetime} </div>
                 </div>)
               }
 

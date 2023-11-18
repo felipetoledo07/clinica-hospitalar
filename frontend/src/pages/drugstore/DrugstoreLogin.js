@@ -3,8 +3,12 @@ import { Formik, Form, Field, ErrorMessage } from "formik"
 import * as Yup from "yup"
 import axios from 'axios'
 import './Drugstore.css'
+import { useNavigate } from "react-router-dom" 
+
 
 function DrugstoreLogin() {
+
+    const navigate = useNavigate();
 
     const initialValues = {
         cnpj: "",
@@ -18,7 +22,12 @@ function DrugstoreLogin() {
 
     const onSubmit = (data) => {
         axios.post("http://localhost:3000/drugstores/login", data).then((response) => {
-            console.log(response)
+            if (response.data.error) {
+                alert(response.data.error);
+            } else {
+                sessionStorage.setItem("accessToken", response.data)
+                navigate("/pharmacy/recipe")
+            }
         })
     }
 

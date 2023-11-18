@@ -90,7 +90,7 @@ router.put("/done/:id", async (req, res) => {
 router.put("/cancel/:id", async (req, res) => {
     const appointment = await Appointment.findByPk(req.params.id);
     appointment.set({
-        StatusId: 3,
+        StatusId: 1,
     })
     await appointment.save();
     res.json(appointment);

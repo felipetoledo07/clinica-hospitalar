@@ -1,11 +1,11 @@
 import React from 'react'
-import SideBar from '../util/SideBar'
+import PharmacySideBar from '../util/PharmacySideBar';
 import axios from "axios"
 import { useEffect, useState } from 'react';
 import '../../App.css';
 import './Doctor.css';
 
-function DoctorHome() {
+function PharmacyDoctor() {
     const [listOfDoctors, setListOfDoctors] = useState([]);
 
     useEffect(() => {
@@ -16,7 +16,7 @@ function DoctorHome() {
 
   return (
     <div className='content'>
-      <SideBar></SideBar>
+        <PharmacySideBar></PharmacySideBar>
       <div className='center'>
         <div className='title'>
           Médicos
@@ -46,4 +46,4 @@ function DoctorHome() {
   )
 }
 
-export default DoctorHome
+export default PharmacyDoctor

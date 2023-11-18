@@ -1,11 +1,11 @@
 import React from 'react'
-import SideBar from '../util/SideBar'
+import PharmacySideBar from "../util/PharmacySideBar"
 import axios from "axios"
 import { useEffect, useState } from 'react';
 import '../../App.css';
 import './Drugstore.css';
 
-function DrugstoreHome() {
+function PharmacyDrugstore() {
     const [listOfDrugstores, setListOfDrugstores] = useState([]);
 
     useEffect(() => {
@@ -16,7 +16,7 @@ function DrugstoreHome() {
 
   return (
     <div className='content'>
-      <SideBar></SideBar>
+      <PharmacySideBar></PharmacySideBar>
       <div className='center'>
         <div className='title'>
           Farmácias
@@ -40,4 +40,4 @@ function DrugstoreHome() {
   )
 }
 
-export default DrugstoreHome
+export default PharmacyDrugstore
