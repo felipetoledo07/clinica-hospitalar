@@ -29,7 +29,7 @@ function RecipeHome() {
 
               {listOfRecipes.map((value, key) => {
 
-                let avaliability_display = value.avaliability ? "Disponível" : "Indisponível"
+                let avaliability_display = value.avaliability && new Date(value.expire_date) >= new Date() ? "Disponível" : "Indisponível"
 
               return (
               <div className='recipes hover'>

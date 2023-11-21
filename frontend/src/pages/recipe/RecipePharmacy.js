@@ -28,11 +28,10 @@ function RecipePharmacy() {
           </div>
 
           {listOfRecipes.map((value, key) => {
-            let avaliability = value.avaliability
-              ? "Disponível"
-              : "Indisponível";
 
-            if(value.avaliability) {
+            let avaliability = value.avaliability && new Date(value.expire_date) >= new Date() ? "Disponível" : "Indisponível"
+
+            if(value.avaliability && new Date(value.expire_date) >= new Date()) {
 
                 return (
                   <div className="recipes hover" onClick={() => navigate(`/pharmacy/recipe/${value.id}`)}>
@@ -61,9 +60,7 @@ function RecipePharmacy() {
                     <div className="avaliability"> {avaliability} </div>
                   </div>
                 );
-
             }
-
           })}
         </div>
       </div>

@@ -37,6 +37,9 @@ function Appointment() {
     navigate("/appointment")
   }
 
+  const date = new Date()
+  date.setDate(date.getDate() + 30)
+
   const onSubmit = (data) => {
 
 
@@ -49,6 +52,7 @@ function Appointment() {
     let recipeDescription = {
       description: data.recipe,
       avaliability: 1,
+      expire_date: date,
       AppointmentId: id
     }
 

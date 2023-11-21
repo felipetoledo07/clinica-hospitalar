@@ -8,8 +8,11 @@ module.exports = (sequelize, DataTypes) => {
         avaliability: {
             type: DataTypes.BOOLEAN,
             allowNull: false
+        },
+        expire_date: {
+            type: DataTypes.DATE,
+            allowNull: false
         }
-        
     })
 
 

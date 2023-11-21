@@ -90,7 +90,11 @@ function DoctorRegistration() {
                             <div className='flex_column'>
                                 <label>Horário de atendimento: </label>
                                 <ErrorMessage name="openning_hours" component="span"></ErrorMessage>
-                                <Field className="input" id="inputCreateDoctor" name="openning_hours" placeholder=""></Field>
+                                <Field as="select" name='openning_hours'>
+                                    <option>Selecione</option>
+                                    <option>Matutino</option>
+                                    <option>Vespertino</option>
+                                </Field>
                             </div>
                             
                             <div className='flex_column'>

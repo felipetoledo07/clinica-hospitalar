@@ -19,8 +19,6 @@ function AppointmentHome() {
           })
     }, [])
 
-    
-
   return (
     <div className='content'>
       <SideBar></SideBar>

@@ -10,7 +10,7 @@ router.get("/", async (req, res) => {
 
 router.get("/pharmacy", async (req, res) => {
     const listOfRecipes = await sequelize.query(`
-        select r.id, d.firstname as doctorFirstname, d.lastname as doctorLastname, p.firstname as patientFirstname, p.lastname as patientLastname, r.avaliability
+        select r.id, d.firstname as doctorFirstname, d.lastname as doctorLastname, p.firstname as patientFirstname, p.lastname as patientLastname, r.avaliability, r.expire_date
         from recipes r
         join appointments a on a.id = r.AppointmentId
         join doctors d on a.DoctorId = d.id
