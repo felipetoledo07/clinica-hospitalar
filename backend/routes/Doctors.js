@@ -17,6 +17,18 @@ router.get("/", async (req, res) => {
     res.json(listOfDoctors)
 })
 
+router.get("/name", async (req, res) => {
+
+    const doctorName = req.query.doctorName;
+
+    const doctor = await sequelize.query(`
+    select id from doctors where CONCAT(firstname, ' ', lastname) = '${doctorName}';
+    `,{
+        type: QueryTypes.SELECT
+    })
+    res.json(doctor)
+})
+
 router.get("/:id", async (req, res) => {
     const doctor = await Doctor.findByPk(req.params.id)
     res.json(doctor)

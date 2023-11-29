@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:clinica_hospitalar/screens/appointment.dart';
 import 'package:clinica_hospitalar/screens/signup.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -11,6 +14,34 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+
+  void login() async {
+
+    var body = {
+        'cpf': cpf,
+        'password': password,
+    };
+
+    var response = await http.post(
+      // Uri.parse("http://10.0.2.2:3000/patients/login"), 
+      Uri.parse("http://10.0.2.2:3000/patients/login"), 
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+      },
+      body: json.encode(body));
+
+    
+    
+    var patientId = json.decode(response.body)['id'];
+    
+
+    if (response.statusCode == 200) {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => Appointment(patientId)),
+      );
+    }
+  }
+
   String cpf = '';
   String password = '';
 
@@ -118,13 +149,7 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                     onPressed: () {
-                      if (cpf == '' && password == '') {
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (context) => const Appointment()),
-                        );
-                      } else {
-                        print('Login inválido');
-                      }
+                      login();
                     },
                     child: const Text(
                       "Entrar",

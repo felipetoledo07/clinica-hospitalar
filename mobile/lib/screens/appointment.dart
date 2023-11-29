@@ -1,24 +1,56 @@
+import 'dart:convert';
+
 import 'package:clinica_hospitalar/screens/doctor.dart';
 import 'package:clinica_hospitalar/screens/drugstore.dart';
 import 'package:clinica_hospitalar/screens/login.dart';
 import 'package:clinica_hospitalar/screens/schedule.dart';
 import 'package:clinica_hospitalar/screens/record.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class Appointment extends StatefulWidget {
-  const Appointment({super.key});
+
+  var patientId;
+  
+  Appointment(var patientId) {
+    this.patientId = patientId;
+  }
 
   @override
-  _AppointmentState createState() => _AppointmentState();
+  _AppointmentState createState() => _AppointmentState(this.patientId);
 }
 
 class _AppointmentState extends State<Appointment> {
+  
+  var patientId;
+
+  _AppointmentState(var patientId) {
+    this.patientId = patientId;
+  }
+
+
   final int index = 0;
+
+  List<dynamic> appointments = [];
+
+  Future<void> getAppointments() async {
+    // var response = await http.get(Uri.parse("http://10.0.2.2:3000/appointments"));
+    var response = await http.get(Uri.parse("http://10.0.2.2:3000/appointments"));
+    
+    setState(() {
+      appointments = json.decode(response.body);
+    });
+    
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getAppointments();
+  }
 
   @override
   Widget build(BuildContext context) {
-
-    //final appointments = {...Appointments.fromMap(value)};
 
   const h1Style = TextStyle(
     fontWeight: FontWeight.w500,
@@ -102,33 +134,48 @@ class _AppointmentState extends State<Appointment> {
                           ),
                         ),
                         Container(
-                          padding: const EdgeInsets.all(16),
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context) => const Record()),
-                              );
-                            },
-                            child: const Row(
-                              children: [
-                                Expanded(child: Text("Doutor 1", style: pStyle)),
-                                Expanded(child: Text("Concluído", style: pStyle)),
-                                Expanded(child: Text("00/00/0000 00:00", style: pStyle)),
-                              ],
+                          child: SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.5,
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: appointments.length,
+                              itemBuilder: (_, index) {
+                                if (appointments[index]["description"] == "Realizado") {
+                                  return Container(
+                                    padding: const EdgeInsets.all(16),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(builder: (context) => Record(patientId, appointments[index]['id'])),
+                                        );
+                                      },
+                                      child: Row(
+                                        children: [
+                                          Expanded(child: Text(appointments[index]['doctorName'] ?? 'No Doctor', style: pStyle)),
+                                          Expanded(child: Text(appointments[index]['description'] ?? 'No Status', style: pStyle)),
+                                          Expanded(child: Text(appointments[index]['datetime'] ?? 'No Datetime', style: pStyle)),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                } else {
+                                  return Container(
+                                    padding: const EdgeInsets.all(16),
+                                    child: GestureDetector(
+                                      child: Row(
+                                        children: [
+                                          Expanded(child: Text(appointments[index]['doctorName'] ?? 'No Doctor', style: pStyle)),
+                                          Expanded(child: Text(appointments[index]['description'] ?? 'No Status', style: pStyle)),
+                                          Expanded(child: Text(appointments[index]['datetime'] ?? 'No Datetime', style: pStyle)),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                }
+                              },
                             ),
-                          ),
-                        ),
-
-                        /*
-                        ListView.builder(
-                          itemCount: appointments,
-                          itemBuilder: (context, index) => Appointment(appointments.values.elementAt(index)),
-                            );
-                          },
-                        ),
-                        */
-
-
+                          )
+                        )
                       ],
                     ),
                   ),
@@ -150,7 +197,7 @@ class _AppointmentState extends State<Appointment> {
                   ),
                   onPressed: () {
                     Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const Schedule()),
+                      MaterialPageRoute(builder: (context) => Schedule(patientId)),
                     );
                   },
                   child: const Text(
@@ -182,17 +229,17 @@ class _AppointmentState extends State<Appointment> {
           switch (index) {
             case 0:
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const Appointment()),
+                MaterialPageRoute(builder: (context) => Appointment(patientId)),
               );
               break;
             case 1:
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const Drugstore()),
+                MaterialPageRoute(builder: (context) => Drugstore(patientId)),
               );
               break;
             case 2:
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const Doctor()),
+                MaterialPageRoute(builder: (context) => Doctor(patientId)),
               );
               break;
           }

@@ -1,48 +1,40 @@
-import 'package:flutter/material.dart';
+// import 'dart:convert';
 
-class ScheduleDoctors extends StatefulWidget {
-  const ScheduleDoctors({super.key});
+// import 'package:flutter/material.dart';
+// import 'package:http/http.dart' as http;
 
-  @override
-  _ScheduleDoctorsState createState() => _ScheduleDoctorsState();
-}
+// class ScheduleDoctors extends StatefulWidget {
+//   const ScheduleDoctors({super.key});
 
-class _ScheduleDoctorsState extends State<ScheduleDoctors> {
-  String selectedValue = 'Doctor 1';
+//   @override
+//   _ScheduleDoctorsState createState() => _ScheduleDoctorsState();
+// }
 
-  List<String> items = [
-    'Doctor 1',
-    'Doctor 2',
-    'Doctor 3',
-    'Doctor 4',
-    'Doctor 5',
-  ];
+// class _ScheduleDoctorsState extends State<ScheduleDoctors> {
+//   String selectedValue = '';
+//   int selectedId = 1;
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 375,
-      height: 60,
-      alignment: Alignment.centerLeft,
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(50.0), // Set border radius here
-        border: Border.all(color: const Color(0xffA3A3A3)),
-      ),
-      child: DropdownButton<String>(
-        value: selectedValue,
-        onChanged: (String? newValue) {
-          setState(() {
-            selectedValue = newValue!;
-          });
-        },
-        items: items.map<DropdownMenuItem<String>>((String value) {
-          return DropdownMenuItem<String>(
-            value: value,
-            child: Text(value),
-            );
-        }).toList(),
-      ),
-    );
-  }
-}
+  
+//   List<dynamic> listOfDoctors = [];
+
+//   Future<void> getDoctors() async {
+//     // var response = await http.get(Uri.parse("http://10.0.2.2:3000/doctors"));
+//     var response = await http.get(Uri.parse("http://localhost:3000/doctors"));
+//     setState(() {
+//       listOfDoctors = json.decode(response.body);
+//       selectedValue = json.decode(response.body)[0]["firstname"] + " " + json.decode(response.body)[0]["lastname"];
+//     });
+
+//   }
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     getDoctors();
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return 
+//   }
+// }

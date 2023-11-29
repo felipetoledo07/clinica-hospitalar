@@ -1,16 +1,49 @@
+import 'dart:convert';
+
 import 'package:clinica_hospitalar/screens/appointment.dart';
 import 'package:clinica_hospitalar/screens/doctor.dart';
 import 'package:clinica_hospitalar/screens/login.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class Drugstore extends StatefulWidget {
-  const Drugstore({super.key});
+
+  var patientId;
+
+  Drugstore(var patientId) {
+    this.patientId = patientId;
+  }
 
   @override
-  _DrugstoreState createState() => _DrugstoreState();
+  _DrugstoreState createState() => _DrugstoreState(patientId);
 }
 
 class _DrugstoreState extends State<Drugstore> {
+
+  var patientId;
+
+  _DrugstoreState(var patientId) {
+    this.patientId = patientId;
+  }
+
+   List<dynamic> drugstores = [];
+
+  Future<void> getDrugstores() async {
+    // var response = await http.get(Uri.parse("http://10.0.2.2:3000/drugstores"));
+    var response = await http.get(Uri.parse("http://10.0.2.2:3000/drugstores"));
+    setState(() {
+      drugstores = json.decode(response.body);
+    });
+    
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getDrugstores();
+  }
+
+
   final int index = 1;
 
   final h1Style = const TextStyle(
@@ -99,14 +132,23 @@ class _DrugstoreState extends State<Drugstore> {
                           ),
                         ),
                         Container(
-                          padding: const EdgeInsets.all(16),
-                          child: Row(
-                            children: [
-                              Expanded(child: Text("1", style: pStyle)),
-                              Expanded(child: Text("Pharmacy 1", style: pStyle)),
-                            ],
+                          height: MediaQuery.of(context).size.height * 0.5,
+                          child: ListView.builder(
+                            itemCount: drugstores.length,
+                            itemBuilder: (_, index) {
+                              return Container(
+                                padding: const EdgeInsets.all(16),
+                                child: Row(
+                                  children: [
+                                    Expanded(child: Text(drugstores[index]["id"].toString(), style: pStyle)),
+                                    Expanded(child: Text(drugstores[index]['name'], style: pStyle)),
+                                  ],
+                                ),
+                              );
+                            }
                           ),
-                        ),
+                        )
+                        
                       ],
                     ),
                   ),
@@ -136,17 +178,17 @@ class _DrugstoreState extends State<Drugstore> {
           switch (index) {
             case 0:
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const Appointment()),
+                MaterialPageRoute(builder: (context) => Appointment(patientId)),
               );
               break;
             case 1:
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const Drugstore()),
+                MaterialPageRoute(builder: (context) => Drugstore(patientId)),
               );
               break;
             case 2:
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const Doctor()),
+                MaterialPageRoute(builder: (context) => Doctor(patientId)),
               );
               break;
           }

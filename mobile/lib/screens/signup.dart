@@ -1,6 +1,11 @@
+import 'dart:convert';
+import 'dart:async';
+import 'dart:io';
+import 'package:intl/intl.dart';
 import 'package:clinica_hospitalar/screens/login.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -10,6 +15,30 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
+
+
+  void createPatient() async {
+
+    var body = {
+        'firstname': firstname,
+        'lastname': lastname,
+        'cpf': cpf,
+        'password': password,
+        'birth_date': DateFormat('yyyy-MM-dd').format(birth_date),
+        'address': address
+    };
+
+
+    var response = await http.post(
+      Uri.parse("http://10.0.2.2:3000/patients"), 
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+      },
+      body: json.encode(body)
+      );
+
+  }
+
   String cpf = '';
   String password = '';
   String firstname = '';
@@ -155,7 +184,7 @@ class _SignupState extends State<Signup> {
                 Container(height: 10,),
                 TextField(
                   onChanged: (text) {
-                    lastname = text;
+                    address = text;
                   },
                   decoration: InputDecoration(
                     labelText: 'Endereço',
@@ -202,6 +231,7 @@ class _SignupState extends State<Signup> {
                       ),
                     ),
                     onPressed: () {
+                      createPatient();
                       Navigator.of(context).pushReplacement(
                          MaterialPageRoute(builder: (context) => const Login()),
                        );

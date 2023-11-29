@@ -1,20 +1,99 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:clinica_hospitalar/elements/scheduleDoctors.dart';
 import 'package:clinica_hospitalar/screens/appointment.dart';
 import 'package:clinica_hospitalar/screens/doctor.dart';
 import 'package:clinica_hospitalar/screens/drugstore.dart';
 import 'package:clinica_hospitalar/screens/login.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 
 class Schedule extends StatefulWidget {
-  const Schedule({super.key});
+
+  var patientId;
+
+  Schedule(var patientId) {
+    this.patientId = patientId;
+  }
 
   @override
-  _ScheduleState createState() => _ScheduleState();
+  _ScheduleState createState() => _ScheduleState(patientId);
 }
 
 class _ScheduleState extends State<Schedule> {
-  DateTime datetime = DateTime.now();
+
+  var patientId;
+
+  _ScheduleState(var patientId) {
+    this.patientId = patientId;
+  }
+
+  String selectedValue = '';
+  
+  List<dynamic> listOfDoctors = [];
+
+  Future<void> getDoctorId() async {
+
+    var queryParams = {
+      "doctorName": selectedValue
+    };
+
+    final headers = {HttpHeaders.contentTypeHeader: 'application/json'};
+    var response = await http.get(
+        Uri.http("10.0.2.2:3000", "/doctors/name", queryParams),
+        headers: headers
+    );
+
+    setState(() {
+      doctorId = json.decode(response.body)[0]['id'];
+    });
+
+  }
+
+  Future<void> getDoctors() async {
+    // var response = await http.get(Uri.parse("http://10.0.2.2:3000/doctors"));
+    var response = await http.get(Uri.parse("http://10.0.2.2:3000/doctors"));
+    setState(() {
+      listOfDoctors = json.decode(response.body);
+      selectedValue = json.decode(response.body)[0]["firstname"] + " " + json.decode(response.body)[0]["lastname"];
+      timeController.text = "00:00";
+    });
+    getDoctorId();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getDoctors();
+  }
+
   TextEditingController timeController = TextEditingController();
+  DateTime  datetime =  DateTime.now();
+  int doctorId = 1;
+  // int patientIdBody = 1;
+  int statusId = 3;
+
+  Future<void> createAppointment() async {
+
+      var body = {
+        "description": "Consulta",
+        "datetime": DateFormat('yyyy-MM-dd').format(datetime) + " " + timeController.text + ":00",
+        "DoctorId": doctorId,
+        "PatientId": patientId,
+        "StatusId": statusId,
+      };
+
+      var response = await http.post(
+        Uri.parse("http://10.0.2.2:3000/appointments"),
+        headers: <String, String>{
+          'Content-Type': 'application/json',
+        },
+        body: json.encode(body)
+      );
+  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +174,31 @@ class _ScheduleState extends State<Schedule> {
                             ),
                             Container(
                               padding: const EdgeInsets.only(top: 16, bottom: 16),
-                              child: const ScheduleDoctors(),
+                              child: Container(
+                                width: 375,
+                                height: 60,
+                                alignment: Alignment.centerLeft,
+                                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50.0), // Set border radius here
+                                  border: Border.all(color: const Color(0xffA3A3A3)),
+                                ),
+                                child: DropdownButton<String>(
+                                  value: selectedValue,
+                                  items: listOfDoctors.map((value) => 
+                                    DropdownMenuItem<String>(
+                                      value: value['firstname'] + " " + value['lastname'],
+                                      child: Text(value['firstname'] + " " + value['lastname']),
+                                    ))
+                                    .toList(),
+                                  onChanged: (String? newValue) {
+                                    setState(() {
+                                      selectedValue = newValue!;
+                                    });
+                                    getDoctorId();
+                                  },
+                                ),
+                              ),
                             ),
                             const Text(
                               "Dia",
@@ -115,7 +218,7 @@ class _ScheduleState extends State<Schedule> {
                                       context: context,
                                       initialDate: datetime,
                                       firstDate: DateTime(1900),
-                                      lastDate: DateTime.now(),
+                                      lastDate: DateTime(2025),
                                     );
 
                                     if (selectedDate != null) {
@@ -212,17 +315,17 @@ class _ScheduleState extends State<Schedule> {
           switch (index) {
             case 0:
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const Appointment()),
+                MaterialPageRoute(builder: (context) => Appointment(patientId)),
               );
               break;
             case 1:
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const Drugstore()),
+                MaterialPageRoute(builder: (context) => Drugstore(patientId)),
               );
               break;
             case 2:
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const Doctor()),
+                MaterialPageRoute(builder: (context) => Doctor(patientId)),
               );
               break;
           }
@@ -245,7 +348,7 @@ class _ScheduleState extends State<Schedule> {
                   ),
                   onPressed: () {
                     Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => const Appointment()),
+                      MaterialPageRoute(builder: (context) => Appointment(patientId)),
                     );
                   },
                   child: const Text(
@@ -266,8 +369,9 @@ class _ScheduleState extends State<Schedule> {
                     ),
                   ),
                   onPressed: () {
+                    createAppointment(); 
                     Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => const Appointment()),
+                      MaterialPageRoute(builder: (context) => Appointment(patientId)),
                     );
                   },
                   child: const Text(
