@@ -35,8 +35,7 @@ class _AppointmentState extends State<Appointment> {
 
   Future<void> getAppointments() async {
     // var response = await http.get(Uri.parse("http://10.0.2.2:3000/appointments"));
-    var response = await http.get(Uri.parse("http://10.0.2.2:3000/appointments"));
-    
+    var response = await http.get(Uri.parse("http://10.0.2.2:3000/appointments/patientmobile/" + patientId.toString()));
     setState(() {
       appointments = json.decode(response.body);
     });
@@ -98,7 +97,7 @@ class _AppointmentState extends State<Appointment> {
       backgroundColor: Colors.white,
       elevation: 0.3,
       ),
-      body: Column(
+      body: ListView(
         children: [
           Expanded(
             child: Container(

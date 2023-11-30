@@ -16,6 +16,20 @@ router.get("/", async (req, res) => {
     res.json(listOfAppointments)
 })
 
+router.get("/patientmobile/:id", async (req, res) => {
+    const listOfAppointments = await sequelize.query(`
+    select a.id, CONCAT(d.firstname, ' ', d.lastname) as doctorName,  CONCAT(p.firstname, ' ', p.lastname) as patientName, s.description, a.datetime 
+    from appointments a
+    join doctors d on d.id = a.DoctorId
+    join patients p on p.id = a.PatientId
+    join statuses s on s.id = a.StatusId
+    where p.id = ${req.params.id};
+    `,{
+        type: QueryTypes.SELECT
+    })
+    res.json(listOfAppointments)
+})
+
 router.get("/done/", async (req, res) => {
 
     const id = req.query.id;

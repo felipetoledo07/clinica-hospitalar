@@ -41,7 +41,7 @@ function AppointmentHome() {
                     <div className='doctorName'> {value.doctorName} </div>
                     <div className='patientName'> {value.patientName} </div>
                     <div className='status'> {value.description} </div>
-                    <div className='datetime'> {value.datetime} </div>
+                    <div className='datetime'> {(value.datetime).substring(0, 10).replace("-", "/").replace("-", "/")} - {(value.datetime).substring(11, 16)} </div>
                 </div>)
               } else {
                 return (
@@ -49,7 +49,7 @@ function AppointmentHome() {
                     <div className='doctorName item'> {value.doctorName} </div>
                     <div className='patientName item'> {value.patientName} </div>
                     <div className='status item'> {value.description} </div>
-                    <div className='datetime item'> {value.datetime} </div>
+                    <div className='datetime'> {(value.datetime).substring(0, 10).replace("-", "/").replace("-", "/")} - {(value.datetime).substring(11, 16)} </div>
                 </div>)
               }
 

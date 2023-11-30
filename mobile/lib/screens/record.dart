@@ -172,7 +172,7 @@ class _RecordState extends State<Record> {
                                   child: Text(appointment[0]['description'], style: pStyle),
                                 ),
                                 SizedBox(
-                                  child: Text(appointment[0]['datetime'], style: pStyle),
+                                  child: Text(appointment[0]['datetime'].substring(0, 10), style: pStyle),
                                 ),
                               ],
                             ),
@@ -220,18 +220,6 @@ class _RecordState extends State<Record> {
                                         ),
                                       ),
                                     ],
-                                  ),
-                                ),
-                                Container(
-                                  margin: const EdgeInsets.only(top: 8, left: 16, right: 16, bottom: 8),
-                                  alignment: Alignment.bottomRight,
-                                  child: const Text(
-                                    "Disponível até 27/11/2023",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 14,
-                                      color: Color.fromRGBO(43, 54, 116, 1.0),
-                                    ),
                                   ),
                                 ),
                               ],
