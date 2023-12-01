@@ -234,7 +234,10 @@ class _ScheduleState extends State<Schedule> {
                                     }
                                   },
                                   label: const Text('ˇ'),
-                                  icon: const Icon(Icons.calendar_today),
+                                  icon: const Icon(
+                                    Icons.calendar_today,
+                                    color: Colors.white,
+                                  ),
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.grey[500],
                                     shape: RoundedRectangleBorder(
@@ -298,19 +301,18 @@ class _ScheduleState extends State<Schedule> {
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.home, color: Color(0xff344fff)),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.medical_information),
+            icon: Icon(Icons.medical_information, color: Colors.grey[600]),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Icon(Icons.person, color: Color.grey[600]),
             label: '',
           ),
         ],
-        selectedItemColor: const Color(0xff344fff),
         onTap: (index) {
           switch (index) {
             case 0:
@@ -353,6 +355,9 @@ class _ScheduleState extends State<Schedule> {
                   },
                   child: const Text(
                     "CANCELAR",
+                    style: TextStyle(
+                      color: Colors.white
+                    ),
                   ),
                 ),
               ),
@@ -363,7 +368,7 @@ class _ScheduleState extends State<Schedule> {
                 margin: const EdgeInsets.only(top: 14.0, right: 14.0, bottom: 14.0),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xff05CD99),
+                    backgroundColor: Color(0xff05CD99),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(13),
                     ),
@@ -376,6 +381,9 @@ class _ScheduleState extends State<Schedule> {
                   },
                   child: const Text(
                     "CRIAR",
+                    style: TextStyle(
+                      color: Colors.white
+                    ),
                   ),
                 ),
               ),
