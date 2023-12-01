@@ -369,7 +369,7 @@ class _ScheduleState extends State<Schedule> {
                 margin: const EdgeInsets.only(top: 14.0, right: 14.0, bottom: 14.0),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xff05CD99),
+                    backgroundColor: Color(0xff05CD99),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(13),
                     ),
