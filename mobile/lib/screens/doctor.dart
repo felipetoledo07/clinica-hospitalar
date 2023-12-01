@@ -184,7 +184,7 @@ class _DoctorState extends State<Doctor> {
             label: '',
           ),
         ],
-        selectedItemColor: const Color(0xff344fff),
+        selectedItemColor: Color(0xff344fff),
         onTap: (index) {
           switch (index) {
             case 0:
