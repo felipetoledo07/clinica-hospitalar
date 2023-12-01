@@ -324,19 +324,18 @@ class _RecordState extends State<Record> {
         bottomNavigationBar: BottomNavigationBar(
           items: const [
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+              icon: Icon(Icons.home, color: Color(0xff344fff)),
               label: '',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.medical_information),
+              icon: Icon(Icons.medical_information, color: Colors.grey[600]),
               label: '',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.person),
+              icon: Icon(Icons.person, color: Colors.grey[600]),
               label: '',
             ),
           ],
-          selectedItemColor: Color(0xff344fff),
           onTap: (index) {
             switch (index) {
               case 0:
