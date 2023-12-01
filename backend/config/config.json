@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "bella302",
+    "password": "Password@123",
     "database": "clinicaHospitalar",
     "host": "localhost",
     "dialect": "mysql"
