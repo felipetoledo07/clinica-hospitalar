@@ -201,6 +201,8 @@ class _AppointmentState extends State<Appointment> {
                   },
                   child: const Text(
                     "AGENDAR",
+                    style: TextStyle(
+                      color: Colors.white,
                   ),
                 ),
               ),
@@ -223,7 +225,7 @@ class _AppointmentState extends State<Appointment> {
             label: '',
           ),
         ],
-        selectedItemColor: const Color(0xff344fff),
+        selectedItemColor: Color(0xff344fff),
         onTap: (index) {
           switch (index) {
             case 0:
