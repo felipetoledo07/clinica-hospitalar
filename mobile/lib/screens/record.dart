@@ -311,6 +311,9 @@ class _RecordState extends State<Record> {
                     },
                     child: const Text(
                       "VOLTAR",
+                      style: TextStyle(
+                        color: Colors.white
+                      ),
                     ),
                   ),
                 ),
@@ -333,7 +336,7 @@ class _RecordState extends State<Record> {
               label: '',
             ),
           ],
-          selectedItemColor: const Color(0xff344fff),
+          selectedItemColor: Color(0xff344fff),
           onTap: (index) {
             switch (index) {
               case 0:
