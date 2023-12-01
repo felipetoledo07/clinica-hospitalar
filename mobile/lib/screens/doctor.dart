@@ -170,7 +170,7 @@ class _DoctorState extends State<Doctor> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const [
+        items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home, color: Colors.grey[600]),
             label: '',

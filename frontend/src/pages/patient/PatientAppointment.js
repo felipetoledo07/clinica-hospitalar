@@ -77,9 +77,9 @@ function PatientAppointment() {
                             <div className='appointmentDescription'>
                                 <label className='appointmentLabel'>Data de validade</label>
                                 <div>
-                                        {appointmentObject.suspention}    
-                                    </div>    
-                                </div>
+                                    {appointmentObject.suspention}    
+                                </div>    
+                            </div>
                             
                         </div>
                   </div>

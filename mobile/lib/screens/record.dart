@@ -322,7 +322,7 @@ class _RecordState extends State<Record> {
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
-          items: const [
+          items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.home, color: Color(0xff344fff)),
               label: '',

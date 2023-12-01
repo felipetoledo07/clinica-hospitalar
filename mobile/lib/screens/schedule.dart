@@ -299,7 +299,7 @@ class _ScheduleState extends State<Schedule> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const [
+        items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home, color: Color(0xff344fff)),
             label: '',
@@ -309,7 +309,7 @@ class _ScheduleState extends State<Schedule> {
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person, color: Color.grey[600]),
+            icon: Icon(Icons.person, color: Colors.grey[600]),
             label: '',
           ),
         ],
