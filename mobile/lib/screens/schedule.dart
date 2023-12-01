@@ -234,7 +234,10 @@ class _ScheduleState extends State<Schedule> {
                                     }
                                   },
                                   label: const Text('ˇ'),
-                                  icon: const Icon(Icons.calendar_today),
+                                  icon: const Icon(
+                                    Icons.calendar_today,
+                                    color: Colors.white,
+                                  ),
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.grey[500],
                                     shape: RoundedRectangleBorder(
@@ -353,6 +356,9 @@ class _ScheduleState extends State<Schedule> {
                   },
                   child: const Text(
                     "CANCELAR",
+                    style: TextStyle(
+                      color: Colors.white
+                    ),
                   ),
                 ),
               ),
@@ -376,6 +382,9 @@ class _ScheduleState extends State<Schedule> {
                   },
                   child: const Text(
                     "CRIAR",
+                    style: TextStyle(
+                      color: Colors.white
+                    ),
                   ),
                 ),
               ),
