@@ -213,11 +213,11 @@ class _AppointmentState extends State<Appointment> {
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home, color: Colors.grey[600]),
+            icon: Icon(Icons.home, color: Color(0xff344fff)),
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.medical_information, color: Color(0xff344fff)),
+            icon: Icon(Icons.medical_information, color: Colors.grey[600]),
             label: '',
           ),
           BottomNavigationBarItem(
