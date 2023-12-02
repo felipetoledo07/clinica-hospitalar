@@ -36,7 +36,7 @@ function PatientAppointment() {
                   <div className='appointment'>
                       <div className='patientName'> {appointmentObject.doctorName} </div>
                       <div className='description'> {appointmentObject.description} </div>
-                      <div className='datetime'> {(appointmentObject.datetime).substring(0, 10).replace("-", "/").replace("-", "/")}</div>
+                      <div className='datetime'> {(appointmentObject.datetime)}</div>
                   </div>
                   <div className='appointmentContent'>
                         <div className='appointmentBox'>
