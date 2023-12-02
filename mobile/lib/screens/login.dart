@@ -30,9 +30,11 @@ class _LoginState extends State<Login> {
       },
       body: json.encode(body));
 
-    
-    
-    var patientId = json.decode(response.body)['id'];
+    var patientId;
+
+    if(response.body.isNotEmpty) {
+      patientId = json.decode(response.body)['id'];
+    }
     
 
     if (response.statusCode == 200) {
